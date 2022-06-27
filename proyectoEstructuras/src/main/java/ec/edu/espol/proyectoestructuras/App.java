@@ -93,8 +93,19 @@ public class App extends Application {
         System.out.println(l1.isEmpty());
         l1.addFirst("hola");
         l1.addFirst("chao");
-        l1.addFirst("hola");
+        l1.addFirst("hola2");
+        l1.addLast("penultimo");
+        l1.addLast("ultimo?");
+        l1.addLast("Pedro");
+        l1.addFirst("dome");
         System.out.println(l1.isEmpty());
+        System.out.println(l1.toString());
+        System.out.println(l1.removeFirst().getDato());
+        System.out.println(l1.toString());
+        System.out.println(l1.removeLast().getDato());
+        System.out.println(l1.toString());
+        System.out.println(l1.remove("dome"));
+        System.out.println(l1.remove("chao").getDato());
         System.out.println(l1.toString());
     }
 

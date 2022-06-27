@@ -36,6 +36,63 @@ public class LinkedList<E> {
             tail=nuevo;
         }
     }
+    public Node<E> removeFirst(){
+        Node<E> nuevo = head;
+        if(head==null) return null;
+        if(head==tail){
+            head=tail=null;
+        }else{
+            head= nuevo.next;
+        }
+            return nuevo;
+    }
+    public Node<E> removeLast(){
+        Node<E> nuevo = tail;
+        if(head==tail)head=tail=null;
+        else{
+            Node<E> tmp = head;
+            while(tmp.next!=tail){
+                tmp=tmp.next;
+            }
+        tail=tmp;
+        }tail.next=null;
+        return nuevo;
+    }
+    public Node<E> remove(E dato){
+        if(isEmpty()) return null;
+        Node<E> anterior=head;
+        Node<E> tmp=head.next;
+        if(head==tail && head.dato==dato){
+                head=tail=null;
+                return head;
+        }else if(dato==head.dato){
+                head=head.next;
+                return head;
+                
+        }else{    
+            while(tmp!=null && tmp.dato!=dato){            
+                anterior=anterior.next;
+                tmp=tmp.next;
+            }
+            if(tmp!=null){
+                anterior.next=tmp.next;
+                if(tmp==tail){
+                    tail=anterior;
+                }
+            }
+            }
+        
+        return tmp;
+    }
+    public boolean search(E dato){
+        Node tmp=head;
+        while(tmp!=null && tmp.dato!=dato){
+            tmp=tmp.next;
+        }
+        return tmp!=null;
+    }
+        
+    
     
     public class Node<E>{
         private E dato;
