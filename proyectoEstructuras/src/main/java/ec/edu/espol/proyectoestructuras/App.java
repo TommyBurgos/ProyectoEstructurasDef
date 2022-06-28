@@ -1,5 +1,6 @@
 package ec.edu.espol.proyectoestructuras;
 
+import Estructuras.DoubleLinkedList;
 import Estructuras.LinkedList;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -107,6 +108,18 @@ public class App extends Application {
         System.out.println(l1.remove("dome"));
         System.out.println(l1.remove("chao").getDato());
         System.out.println(l1.toString());
+        System.out.println("---------------");
+        DoubleLinkedList<String> l2= new DoubleLinkedList<>(); 
+        System.out.println(l2.isEmpty());
+        l2.addFirst("hola");
+        l2.addFirst("chao");
+        l2.addFirst("hola2");
+        l2.addLast("penultimo");
+        l2.addLast("ultimo?");
+        l2.addLast("Pedro");
+        l2.addFirst("dome");
+        System.out.println(l2.isEmpty());
+        System.out.println(l2.toString());
     }
 
 }
