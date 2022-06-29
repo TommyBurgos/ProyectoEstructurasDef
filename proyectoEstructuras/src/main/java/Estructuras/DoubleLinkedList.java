@@ -37,6 +37,24 @@ public class DoubleLinkedList<E> {
             head=tail=new Node(dato);
         }
     }
+    public Node<E> removeFirst(){
+        Node<E> tmp=head;
+        if(head==tail) head=tail=null;
+        else{
+            head=head.next;
+            head.previous=null;
+        }
+        return tmp;
+    }
+    public Node<E> removeLast(){
+        Node<E> tmp=tail;
+        if(head==tail) head=tail=null;
+        else{
+            tail=tail.previous;
+            tail.next=null;
+        }
+        return tmp;
+    }
 
     @Override
     public String toString() {
