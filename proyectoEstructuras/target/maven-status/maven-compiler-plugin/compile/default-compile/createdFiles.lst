@@ -1,4 +1,9 @@
 module-info.class
+Estructuras\DoubleLinkedList$Node.class
 ec\edu\espol\proyectoestructuras\SecondaryController.class
+Estructuras\Queue.class
+Estructuras\DoubleLinkedList.class
+Estructuras\LinkedList.class
 ec\edu\espol\proyectoestructuras\App.class
+Estructuras\LinkedList$Node.class
 ec\edu\espol\proyectoestructuras\PrimaryController.class

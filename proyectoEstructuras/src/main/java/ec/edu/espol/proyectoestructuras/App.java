@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.io.InputStream;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
@@ -18,8 +19,13 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 /**
@@ -38,7 +44,7 @@ public class App extends Application {
         
         VBox contLogin=new VBox();
        
-         Label lbUser=new Label("Usuario");
+        Label lbUser=new Label("Usuario");
         lbUser.setFont(new Font(20));
         Label lbCont=new Label("Contraseña");
         lbCont.setFont(new Font(20));
@@ -70,9 +76,27 @@ public class App extends Application {
         
         
         VBox contRight= new VBox();
-       
+        
+        ImageView ImagenLogo;
+        InputStream inputStream;
+        inputStream = getClass().getResourceAsStream("logo.png");
+        Image imagen= new Image(inputStream);
+        
+        ImagenLogo= new ImageView(imagen);
+        contRight.getChildren().add(ImagenLogo);
+        
+        contRight.setPrefWidth(322);
+        contRight.setAlignment(Pos.CENTER);
+        contRight.setBackground(new Background(new BackgroundFill(Color.web("#30373e"),CornerRadii.EMPTY,Insets.EMPTY)));
+        
+        
         HBox root=new HBox();
         root.getChildren().addAll(contLeft,contRight);
+        
+        HBox.setHgrow(contLeft, Priority.ALWAYS);
+        HBox.setHgrow(contRight, Priority.ALWAYS);
+        
+        
         
         scene = new Scene(root, 640, 480);
         stage.setScene(scene);
