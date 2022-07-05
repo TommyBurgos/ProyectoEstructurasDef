@@ -10,13 +10,12 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.io.InputStream;
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
@@ -34,39 +33,38 @@ import javafx.scene.text.Font;
 public class App extends Application {
 
     private static Scene scene;
-
+    
     @Override
     public void start(Stage stage) throws IOException {
         VBox contLeft= new VBox();
         //Agregar nodos hijos de la izquierda
-        Label lbLogin=new Label("INICIAR SESIÓN");
+        Label lbLogin=new Label("BIENVENIDO");
         lbLogin.setFont(new Font(30));
         
         VBox contLogin=new VBox();
        
-        Label lbUser=new Label("Usuario");
+        Label lbUser=new Label("Da clic para ingresar a tú gestor de fotos favorito");
         lbUser.setFont(new Font(20));
-        Label lbCont=new Label("Contraseña");
-        lbCont.setFont(new Font(20));
+        //Label lbCont=new Label("Contraseña");
+        //lbCont.setFont(new Font(20));
         
-        TextField textUser= new TextField();
-        textUser.setFont(new Font(18));
-        textUser.setPromptText("Ingrese su usuario");
-        textUser.setPrefWidth(341);
-        textUser.setPrefHeight(44);
+        //TextField textUser= new TextField();
+        //textUser.setFont(new Font(18));
+        //textUser.setPromptText("Ingrese su usuario");
+        //textUser.setPrefWidth(341);
+        //textUser.setPrefHeight(44);
         
         
-        PasswordField password= new PasswordField();
-        password.setFont(new Font(20));
-        password.setPromptText("Ingrese una contraseña");
+        //PasswordField password= new PasswordField();
+        //password.setFont(new Font(20));
+        //password.setPromptText("Ingrese una contraseña");
         
         Button btIngresar=new Button("Ingresar");
-        btIngresar.setPrefWidth(370);
-        btIngresar.setPrefHeight(44);
-        btIngresar.setMaxWidth(Double.MAX_VALUE);
-        btIngresar.setCursor(Cursor.HAND);
+        btIngresar.getOnAction();
        
-        contLogin.getChildren().addAll(lbUser,textUser,lbCont,password,btIngresar);
+        
+       
+        contLogin.getChildren().addAll(lbUser,btIngresar);
         contLogin.setAlignment(Pos.TOP_LEFT);
         
         contLeft.getChildren().addAll(lbLogin,contLogin);
@@ -83,26 +81,27 @@ public class App extends Application {
         Image imagen= new Image(inputStream);
         
         ImagenLogo= new ImageView(imagen);
-        contRight.getChildren().add(ImagenLogo);
+        VBox contImag= new VBox();
+        contImag.getChildren().add(ImagenLogo);
+        contImag.setAlignment(Pos.CENTER_RIGHT);
+        contRight.getChildren().add(contImag);
         
-        contRight.setPrefWidth(322);
+        contRight.setPrefWidth(310);
         contRight.setAlignment(Pos.CENTER);
-        contRight.setBackground(new Background(new BackgroundFill(Color.web("#30373e"),CornerRadii.EMPTY,Insets.EMPTY)));
         
-        
+              
         HBox root=new HBox();
         root.getChildren().addAll(contLeft,contRight);
         
         HBox.setHgrow(contLeft, Priority.ALWAYS);
         HBox.setHgrow(contRight, Priority.ALWAYS);
-        
-        
-        
-        scene = new Scene(root, 640, 480);
+                
+        scene = new Scene(loadFXML("vtPrincipal"), 1140, 550);
+        stage.setTitle("Your Memories");
         stage.setScene(scene);
         stage.show();
     }
-
+ 
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
