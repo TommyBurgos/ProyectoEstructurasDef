@@ -1,3 +1,4 @@
+Estructuras\CircleList$Node.class
 ec\edu\espol\proyectoestructuras\VtSegundaController.class
 Estructuras\Queue.class
 Estructuras\DoubleLinkedList.class
@@ -5,5 +6,6 @@ Estructuras\LinkedList.class
 ec\edu\espol\proyectoestructuras\VtPrincipalController.class
 module-info.class
 Estructuras\DoubleLinkedList$Node.class
+Estructuras\CircleList.class
 ec\edu\espol\proyectoestructuras\App.class
 Estructuras\LinkedList$Node.class
