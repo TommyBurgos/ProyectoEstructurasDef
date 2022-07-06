@@ -7,6 +7,7 @@ package ec.edu.espol.proyectoestructuras;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -41,6 +42,15 @@ public class VtSegundaController implements Initializable {
         buscar.setPromptText("Buscar");
         ptCentro.setBackground(new Background(new BackgroundFill(Color.web("#BDBDBD"),CornerRadii.EMPTY,Insets.EMPTY)));
         btCrearAlbun.setBackground(new Background(new BackgroundFill(Color.web("#FFFFFF"),CornerRadii.EMPTY,Insets.EMPTY)));
-    }    
+    }
+        @FXML
+    void showCrearAlbum(ActionEvent event) throws IOException {
+        App.setRoot("vtSubirFotosController");
+
+    }
+
+    
+ 
+      
     
 }

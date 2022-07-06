@@ -11,8 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="550.0" prefWidth="1140.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18" fx:controller="ec.edu.espol.proyectoestructuras.VtSegundaController">
+<AnchorPane id="AnchorPane" prefHeight="550.0" prefWidth="1140.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.proyectoestructuras.VtSegundaController">
    <children>
       <HBox prefHeight="550.0" prefWidth="1140.0">
          <children>
@@ -50,7 +49,7 @@
                      <children>
                         <HBox alignment="CENTER" prefHeight="225.0" prefWidth="1100.0">
                            <children>
-                              <Button fx:id="btCrearAlbun" alignment="TOP_LEFT" blendMode="DARKEN" contentDisplay="TOP" graphicTextGap="1.0" mnemonicParsing="false" prefHeight="112.0" prefWidth="165.0" text="Crear nuevo album">
+                              <Button fx:id="btCrearAlbun" alignment="TOP_LEFT" blendMode="DARKEN" contentDisplay="TOP" graphicTextGap="1.0" mnemonicParsing="false" onMouseClicked="#showCrearAlbum" prefHeight="112.0" prefWidth="165.0" text="Crear nuevo album">
                                  <HBox.margin>
                                     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                                  </HBox.margin>
