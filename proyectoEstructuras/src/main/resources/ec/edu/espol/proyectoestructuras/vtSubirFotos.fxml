@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<fx:root id="AnchorPane" prefHeight="400.0" prefWidth="600.0" type="AnchorPane" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="ec.edu.espol.proyectoEstructuras.VtSubirFotosController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="ec.edu.espol.proyectoestructuras.VtSubirFotosController">
    <children>
       <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="44.0" prefWidth="600.0">
          <children>
@@ -36,4 +36,4 @@
       </AnchorPane>
       <FlowPane fx:id="panel" layoutX="196.0" layoutY="54.0" prefHeight="336.0" prefWidth="406.0" />
    </children>
-</fx:root>
+</AnchorPane>

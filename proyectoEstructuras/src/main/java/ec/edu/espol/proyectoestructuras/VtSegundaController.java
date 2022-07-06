@@ -28,11 +28,16 @@ import javafx.scene.paint.Color;
 public class VtSegundaController implements Initializable {
    
     @FXML
-    TextField buscar;
+    private TextField buscar;
     @FXML
-    HBox ptCentro;
+    private HBox ptCentro;
     @FXML
-    Button btCrearAlbun;
+    private HBox barraName;
+    @FXML
+    private HBox barraSuperior;
+    @FXML
+    private Button btCrearAlbun;
+    
     @FXML
     private void regresar() throws IOException{
         App.setRoot("vtPrincipal");
@@ -40,12 +45,15 @@ public class VtSegundaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         buscar.setPromptText("Buscar");
-        ptCentro.setBackground(new Background(new BackgroundFill(Color.web("#BDBDBD"),CornerRadii.EMPTY,Insets.EMPTY)));
-        btCrearAlbun.setBackground(new Background(new BackgroundFill(Color.web("#FFFFFF"),CornerRadii.EMPTY,Insets.EMPTY)));
+        ptCentro.setBackground(new Background(new BackgroundFill(Color.web("#D3E5FD"),CornerRadii.EMPTY,Insets.EMPTY)));
+        barraSuperior.setBackground(new Background(new BackgroundFill(Color.web("#C2DBFC"),CornerRadii.EMPTY,Insets.EMPTY)));
+        barraName.setBackground(new Background(new BackgroundFill(Color.web("#C2DBFC"),CornerRadii.EMPTY,Insets.EMPTY)));
+        btCrearAlbun.setBackground(new Background(new BackgroundFill(Color.web("#F5FC6E"),CornerRadii.EMPTY,Insets.EMPTY)));
     }
-        @FXML
-    void showCrearAlbum(ActionEvent event) throws IOException {
-        App.setRoot("vtSubirFotosController");
+    @FXML
+    private void showCrearAlbum() throws IOException {
+        System.out.println("Propiedad leida, todo bien");
+        App.setRoot("vtSubirFotos");
 
     }
 
