@@ -16,12 +16,14 @@ public class Foto {
     private String lugar;
     private Date fecha;
     private String personas;
+    private String rutaFoto;
 
-    public Foto(String descripcion, String lugar, Date fecha, String personas) {
+    public Foto(String descripcion, String lugar, Date fecha, String personas, String rutaFoto) {
         this.descripcion = descripcion;
         this.lugar = lugar;
         this.fecha = fecha;
         this.personas = personas;
+        this.rutaFoto=rutaFoto;
     }
 
     public String getDescripcion() {
@@ -43,7 +45,11 @@ public class Foto {
     public Date getFecha() {
         return fecha;
     }
-
+    public String getRutaFoto() {
+        return rutaFoto;
+    }
+    
+    
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
@@ -54,6 +60,12 @@ public class Foto {
 
     public void setPersonas(String personas) {
         this.personas = personas;
+    }
+
+    
+
+    public void setRutaFoto(String rutaFoto) {
+        this.rutaFoto = rutaFoto;
     }
     
     
