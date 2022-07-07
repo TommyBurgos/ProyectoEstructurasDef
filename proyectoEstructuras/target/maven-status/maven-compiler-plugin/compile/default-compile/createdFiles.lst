@@ -1,5 +1,4 @@
 Estructuras\Stack.class
-Estructuras\CircleList$Node.class
 ec\edu\espol\proyectoestructuras\VtSegundaController.class
 Estructuras\Queue.class
 Estructuras\DoubleLinkedList.class
@@ -8,8 +7,9 @@ ec\edu\espol\proyectoestructuras\VtPrincipalController.class
 Estructuras\Stack$Node.class
 module-info.class
 ec\edu\espol\model\Foto.class
-Estructuras\DoubleLinkedList$Node.class
 Estructuras\CircleList.class
-ec\edu\espol\proyectoestructuras\VtSubirFotosController.class
 ec\edu\espol\proyectoestructuras\App.class
 Estructuras\LinkedList$Node.class
+Estructuras\CircleList$Node.class
+Estructuras\DoubleLinkedList$Node.class
+ec\edu\espol\proyectoestructuras\VtSubirFotosController.class

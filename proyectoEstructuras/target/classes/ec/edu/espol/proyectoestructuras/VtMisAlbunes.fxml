@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18" fx:controller="ec.edu.espol.proyectoestructuras.VtMisAlbunesController">
+   <children>
+      <HBox fx:id="barraName" prefHeight="43.0" prefWidth="1140.0">
+         <children>
+            <ImageView fitHeight="44.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@logo.png" />
+               </image>
+            </ImageView>
+            <Label prefHeight="43.0" prefWidth="227.0" text="YOUR-MEMORIES">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <VBox layoutY="43.0" prefHeight="357.0" prefWidth="1140.0">
+         <children>
+            <HBox fx:id="barraSuperior" prefHeight="38.0" prefWidth="1140.0">
+               <children>
+                  <ImageView fitHeight="35.0" fitWidth="55.0" onMouseClicked="#regresar" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@volver.png" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="buscar" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

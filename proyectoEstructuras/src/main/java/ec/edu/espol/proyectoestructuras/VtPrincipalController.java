@@ -14,6 +14,7 @@ import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.Border;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
@@ -47,6 +48,8 @@ public class VtPrincipalController implements Initializable {
         btIngresar.setMaxWidth(Double.MAX_VALUE);
         btIngresar.setCursor(Cursor.HAND);
         btIngresar.setText("Da Clic aquí");
+        btIngresar.setBackground(new Background(new BackgroundFill(Color.web("#91B8EA"),CornerRadii.EMPTY,Insets.EMPTY)));
+        btIngresar.setBorder(Border.EMPTY);
         HBox.setHgrow(contLeft, Priority.ALWAYS);
         HBox.setHgrow(contRight, Priority.ALWAYS);
         
