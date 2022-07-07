@@ -7,8 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="ec.edu.espol.proyectoestructuras.VtSubirFotosController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.proyectoestructuras.VtSubirFotosController">
    <children>
       <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="44.0" prefWidth="600.0">
          <children>
@@ -19,19 +18,21 @@
             </Text>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="356.0" prefWidth="160.0">
+      <AnchorPane fx:id="albumname" layoutX="10.0" layoutY="10.0" prefHeight="356.0" prefWidth="160.0">
          <children>
-            <Text layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingrese el nombre del " />
-            <Text layoutX="14.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="albúm que va a agregar" />
+            <Text layoutX="14.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingrese el nombre del " />
+            <Text layoutX="11.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="albúm que va a agregar" />
             <Button fx:id="volver" layoutX="14.0" layoutY="280.0" mnemonicParsing="false" onMouseClicked="#RegresarAOpciones" prefHeight="26.0" prefWidth="133.0" text="Regresar" />
             <Button fx:id="conf" layoutX="14.0" layoutY="317.0" mnemonicParsing="false" onMouseClicked="#ConfirmarYRegresar" prefHeight="26.0" prefWidth="133.0" text="Confirmar" />
-            <Button fx:id="sf" layoutX="15.0" layoutY="187.0" mnemonicParsing="false" onMouseClicked="#subirfoto" prefHeight="27.0" prefWidth="132.0" text="Subir imagen" />
+            <Button fx:id="sf" layoutX="15.0" layoutY="228.0" mnemonicParsing="false" onMouseClicked="#subirfoto" prefHeight="27.0" prefWidth="132.0" text="Subir imagen" />
             <Text layoutX="15.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="información de la foto" />
             <Text layoutX="15.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="en los siguientes recuadros:" />
             <Text layoutX="15.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Por favor, ingrese la" />
             <Text layoutX="8.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Agregar la imagen al albúm" />
             <Text fx:id="txtimg" layoutX="15.0" layoutY="268.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-            <TextField fx:id="albumname" layoutX="11.0" layoutY="57.0" promptText="Album#1..." />
+            <Text layoutX="11.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="la foto nueva:" />
+            <TextField fx:id="alname" layoutX="7.0" layoutY="56.0" />
+            <Button fx:id="okButton" layoutX="131.0" layoutY="56.0" mnemonicParsing="false" onMouseClicked="#ingresarParametros" text="OK" />
          </children>
       </AnchorPane>
       <FlowPane fx:id="panel" layoutX="196.0" layoutY="54.0" prefHeight="336.0" prefWidth="406.0" />

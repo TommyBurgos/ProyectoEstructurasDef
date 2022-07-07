@@ -56,7 +56,6 @@ public class VtSegundaController implements Initializable {
     }
     @FXML
     private void showCrearAlbum() throws IOException {
-        System.out.println("Propiedad leida, todo bien");
         App.setRoot("vtSubirFotos");
 
     }

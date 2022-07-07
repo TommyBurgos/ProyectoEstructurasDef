@@ -5,6 +5,8 @@
  */
 package ec.edu.espol.model;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 
 /**
@@ -68,6 +70,9 @@ public class Foto {
         this.rutaFoto = rutaFoto;
     }
     
+    public static ArrayList<String> atributos(){
+        ArrayList<String> lista = new ArrayList(Arrays.asList("Descripción","Lugar","Fecha","Personas"));
+        return lista;}
     
     
 }
