@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -9,8 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18" fx:controller="ec.edu.espol.proyectoestructuras.VtMisAlbunesController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.proyectoestructuras.VtMisAlbunesController">
    <children>
       <HBox fx:id="barraName" prefHeight="43.0" prefWidth="1140.0">
          <children>
@@ -35,7 +33,6 @@
                         <Image url="@volver.png" />
                      </image>
                   </ImageView>
-                  <TextField fx:id="buscar" />
                </children>
             </HBox>
          </children>

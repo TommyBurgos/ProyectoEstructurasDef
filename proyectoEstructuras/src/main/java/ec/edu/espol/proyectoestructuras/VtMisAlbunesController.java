@@ -23,8 +23,7 @@ import javafx.scene.paint.Color;
  * @author tommy_Burgos
  */
 public class VtMisAlbunesController implements Initializable {
-    @FXML
-    private TextField buscar;
+
     @FXML
     private HBox barraName;
     @FXML
@@ -36,7 +35,7 @@ public class VtMisAlbunesController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        buscar.setPromptText("Buscar");
+        
         barraSuperior.setBackground(new Background(new BackgroundFill(Color.web("#C2DBFC"),CornerRadii.EMPTY,Insets.EMPTY)));
         barraName.setBackground(new Background(new BackgroundFill(Color.web("#C2DBFC"),CornerRadii.EMPTY,Insets.EMPTY)));
     }    

@@ -71,7 +71,7 @@ public class Foto {
     }
     
     public static ArrayList<String> atributos(){
-        ArrayList<String> lista = new ArrayList(Arrays.asList("Descripción","Lugar","Fecha","Personas"));
+        ArrayList<String> lista = new ArrayList(Arrays.asList("Descripción","Lugar","Fecha"));
         return lista;}
     
     

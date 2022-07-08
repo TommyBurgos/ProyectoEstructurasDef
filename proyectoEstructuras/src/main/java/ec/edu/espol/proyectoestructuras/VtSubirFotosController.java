@@ -12,6 +12,7 @@ import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
@@ -26,8 +27,12 @@ import javafx.stage.FileChooser;
 
   
 public class VtSubirFotosController {
-
-   
+    private ComboBox carpetas;
+    private ComboBox cbOp;
+    private ComboBox cbCantPersonas;
+    private String path ="src\\main\\resources\\img\\";   
+    
+    
     @FXML
     private TextField alname;
 
@@ -71,26 +76,47 @@ public class VtSubirFotosController {
     void subirfoto(MouseEvent event)throws IOException {
          FileChooser fc = new FileChooser();
         fc.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Imagenes","*.jpg","*.jpeg","*.png"));
+        new FileChooser.ExtensionFilter("Imagenes","*.jpg","*.jpeg","*.png"));
         File selectedFile = fc.showOpenDialog(null);
         if (selectedFile != null){
-            String placeToSaveFile = "src/main/resources/img/"+selectedFile.getName();
+            String placeToSaveFile = path+selectedFile.getName();
             Files.copy(selectedFile.toPath(),new File(placeToSaveFile).toPath(),StandardCopyOption.REPLACE_EXISTING);
             txtimg.setText(selectedFile.getName());
         } else {
             txtimg.setText("");
-        }
-        
-   
-        
-        
+        }           
 
     }
+    
+    void subirfoto(String ruta)throws IOException {
+         FileChooser fc = new FileChooser();
+        fc.getExtensionFilters().addAll(
+        new FileChooser.ExtensionFilter("Imagenes","*.jpg","*.jpeg","*.png"));
+        File selectedFile = fc.showOpenDialog(null);
+        if (selectedFile != null){
+            String placeToSaveFile = ruta+selectedFile.getName();
+            Files.copy(selectedFile.toPath(),new File(placeToSaveFile).toPath(),StandardCopyOption.REPLACE_EXISTING);
+            txtimg.setText(selectedFile.getName());
+        } else {
+            txtimg.setText("");
+        } }
+    
      @FXML
-    void ingresarParametros(MouseEvent event){
+    void ingresarParametros(MouseEvent event) throws IOException{
         ArrayList<String> atrib = Foto.atributos();
-                for(String cad:atrib)
-                    añadirCaja(cad+":");
+            for(String cad:atrib)
+                añadirCaja(cad+":");
+        añadirCaja("Aparecen personas en la foto?");
+        String nombreDir=alname.getText();
+        String ruta=path+nombreDir;
+        File D = new File(ruta);
+        boolean D1 = D.mkdirs(); 
+        if(D1){  
+         System.out.println("Folder is created successfully");  
+      }else{  
+         System.out.println("Error Found!");  
+      }
+         subirfoto(ruta+"\\");
     }
       public void añadirCaja(String cad){
         VBox vb = new VBox();
