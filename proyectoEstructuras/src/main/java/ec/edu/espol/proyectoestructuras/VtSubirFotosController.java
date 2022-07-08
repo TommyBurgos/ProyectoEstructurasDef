@@ -4,13 +4,16 @@
  * and open the template in the editor.
  */
 package ec.edu.espol.proyectoestructuras;
+import Estructuras.LinkedList;
 import ec.edu.espol.model.Foto;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -27,6 +30,7 @@ import javafx.stage.FileChooser;
 
   
 public class VtSubirFotosController {
+    private LinkedList<String> rutas;
     private ComboBox carpetas;
     private ComboBox cbOp;
     private ComboBox cbCantPersonas;
@@ -97,8 +101,16 @@ public class VtSubirFotosController {
             String placeToSaveFile = ruta+selectedFile.getName();
             Files.copy(selectedFile.toPath(),new File(placeToSaveFile).toPath(),StandardCopyOption.REPLACE_EXISTING);
             txtimg.setText(selectedFile.getName());
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Albun creado exitosamente");
+            alert.setTitle("success");
+            alert.setHeaderText(null);
+            alert.showAndWait();
         } else {
             txtimg.setText("");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("No se pudo cargar la imagen");
+            alert.showAndWait();
         } }
     
      @FXML
@@ -107,16 +119,34 @@ public class VtSubirFotosController {
             for(String cad:atrib)
                 añadirCaja(cad+":");
         añadirCaja("Aparecen personas en la foto?");
+        ArrayList<String> listaOp= new ArrayList<>();
+        listaOp.add("Si");listaOp.add("No");
+        //addCombo(cbOp, listaOp);
+        //panel.getChildren().add(cbOp);
+        //
         String nombreDir=alname.getText();
         String ruta=path+nombreDir;
         File D = new File(ruta);
-        boolean D1 = D.mkdirs(); 
-        if(D1){  
-         System.out.println("Folder is created successfully");  
+        boolean D1 = D.mkdirs();
+        if(D1){ 
+         Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("success");
+        alert.setHeaderText(null);
+        alert.setContentText("Albun creado exitosamente");
+        alert.showAndWait();
       }else{  
-         System.out.println("Error Found!");  
+         Alert alert = new Alert(Alert.AlertType.ERROR);
+         alert.setTitle("Error Message");
+        alert.setHeaderText(null);
+        alert.setContentText("Error Message");
+        alert.showAndWait();
       }
+        
          subirfoto(ruta+"\\");
+         rutas.addLast(ruta+"\\");
+    }
+    public void addCombo(ComboBox cb, ArrayList<String> li){        
+        cb.setItems(FXCollections.observableArrayList(li));
     }
       public void añadirCaja(String cad){
         VBox vb = new VBox();

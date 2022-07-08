@@ -5,6 +5,7 @@
  */
 package ec.edu.espol.model;
 
+import Estructuras.LinkedList;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -17,10 +18,10 @@ public class Foto {
     private String descripcion;
     private String lugar;
     private Date fecha;
-    private String personas;
+    private LinkedList<String> personas;
     private String rutaFoto;
 
-    public Foto(String descripcion, String lugar, Date fecha, String personas, String rutaFoto) {
+    public Foto(String descripcion, String lugar, Date fecha, LinkedList<String> personas, String rutaFoto) {
         this.descripcion = descripcion;
         this.lugar = lugar;
         this.fecha = fecha;
@@ -56,13 +57,15 @@ public class Foto {
         this.fecha = fecha;
     }
 
-    public String getPersonas() {
+    public LinkedList<String> getPersonas() {
         return personas;
     }
 
-    public void setPersonas(String personas) {
+    public void setPersonas(LinkedList<String> personas) {
         this.personas = personas;
     }
+
+
 
     
 
