@@ -6,9 +6,19 @@ package ec.edu.espol.proyectoestructuras;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Collections;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+
 
 /**
  * FXML Controller class
@@ -16,17 +26,59 @@ import javafx.fxml.Initializable;
  * @author tommy_Burgos
  */
 public class VtBibliotecaController implements Initializable {
+    
 
     /**
      * Initializes the controller class.
      */
-     @FXML
-    private void regresar() throws IOException{
-        App.setRoot("vtPrincipal");
+      @FXML
+    private ComboBox<?> cbx1;
+
+    @FXML
+    private ComboBox<?> cbx2;
+
+    @FXML
+    private VBox fotos;
+
+    @FXML
+    private ImageView volver;
+
+    @FXML
+    void buscarAutos(MouseEvent event) {
+
     }
+
+    @FXML
+    void regresar(MouseEvent event) throws IOException {
+        App.setRoot("vtSegunda");
+    }
+
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }  
+    
+    // Se necesita crear una lista de Fotos en donde se guarden las fotos subidas, despues el código debería mostrar todas las fotos al dar clik en
+    //el Vbox, tambien se puede crear una lista de albumes y realizar lo mismo.
+     @FXML
+    private void buscarFotos(MouseEvent event) {
+        fotos.getChildren().clear();
+        
+        //LinkedList<Foto> albumes = 
+      /*  for(Foto a : albumes){
+            HBox datosFoto = new HBox();
+            Text t = new Text(a.toString());
+            datosFoto.setSpacing(10);
+            Image img = new Image("img/"+a.getLink());
+            ImageView imgview = new ImageView(img);
+            imgview.setFitWidth(150);
+            imgview.setFitHeight(150);
+            datosFoto.getChildren().add(t);
+            datosFoto.getChildren().add(imgview);
+            fotos.getChildren().add(datosFoto);*/
+            
+    
+    }
     
 }
