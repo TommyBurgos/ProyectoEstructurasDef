@@ -4,6 +4,8 @@
  */
 package ec.edu.espol.proyectoestructuras;
 
+import Estructuras.LinkedList;
+import ec.edu.espol.model.Foto;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Collections;
@@ -65,8 +67,8 @@ public class VtBibliotecaController implements Initializable {
     private void buscarFotos(MouseEvent event) {
         fotos.getChildren().clear();
         
-        //LinkedList<Foto> albumes = 
-      /*  for(Foto a : albumes){
+       /*LinkedList<Foto> albumes = Foto.leer("Fotos");
+        for(int i = 0; i < albumes.getSize(); i++){
             HBox datosFoto = new HBox();
             Text t = new Text(a.toString());
             datosFoto.setSpacing(10);
@@ -76,9 +78,10 @@ public class VtBibliotecaController implements Initializable {
             imgview.setFitHeight(150);
             datosFoto.getChildren().add(t);
             datosFoto.getChildren().add(imgview);
-            fotos.getChildren().add(datosFoto);*/
+            fotos.getChildren().add(datosFoto);
             
     
-    }
+    }*/
     
+}
 }

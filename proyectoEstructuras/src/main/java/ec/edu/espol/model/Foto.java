@@ -6,6 +6,11 @@
 package ec.edu.espol.model;
 
 import Estructuras.LinkedList;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -17,16 +22,23 @@ import java.util.Date;
 public class Foto {
     private String descripcion;
     private String lugar;
-    private Date fecha;
+    private String fecha;
     private LinkedList<String> personas;
     private String rutaFoto;
 
-    public Foto(String descripcion, String lugar, Date fecha, LinkedList<String> personas, String rutaFoto) {
+    public Foto(String descripcion, String lugar, String fecha, LinkedList<String> personas, String rutaFoto) {
         this.descripcion = descripcion;
         this.lugar = lugar;
         this.fecha = fecha;
         this.personas = personas;
         this.rutaFoto=rutaFoto;
+    }
+    public Foto(String descripcion, String lugar, String fecha, LinkedList<String> personas) {
+        this.descripcion = descripcion;
+        this.lugar = lugar;
+        this.fecha = fecha;
+        this.personas = personas;
+        
     }
 
     public String getDescripcion() {
@@ -45,7 +57,7 @@ public class Foto {
         this.lugar = lugar;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
     public String getRutaFoto() {
@@ -53,7 +65,7 @@ public class Foto {
     }
     
     
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
@@ -74,8 +86,32 @@ public class Foto {
     }
     
     public static ArrayList<String> atributos(){
-        ArrayList<String> lista = new ArrayList(Arrays.asList("Descripción","Lugar","Fecha"));
+        ArrayList<String> lista = new ArrayList(Arrays.asList("Descripción","Lugar","Fecha","Personas"));
         return lista;}
+    
+    
+     public static void serializar(LinkedList<Foto> lista,String archivo){
+        try(FileOutputStream fout = new FileOutputStream(archivo)){
+            try(ObjectOutputStream out = new ObjectOutputStream(fout)){
+            out.writeObject(lista);
+            }   
+        }catch(IOException e){
+                System.out.println(e);
+        }
+    }
+    
+    public static LinkedList<Foto> leer(String archivo){
+        LinkedList<Foto> lista = new LinkedList<>();
+        try(ObjectInputStream in = new ObjectInputStream(new FileInputStream(archivo))){
+            lista = (LinkedList<Foto>)in.readObject();
+        }catch(Exception e){
+            System.out.println(e);
+        }
+        return lista;
+        
+        
+    }
+     
     
     
 }

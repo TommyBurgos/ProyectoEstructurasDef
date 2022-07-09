@@ -11,6 +11,10 @@ package Estructuras;
 public class LinkedList<E> {
     Node<E> head;
     Node<E> tail;
+    
+    public E getFirst() {
+        return head.getDato();
+    }
 
     public LinkedList() {
         head=null;
@@ -91,7 +95,19 @@ public class LinkedList<E> {
         }
         return tmp!=null;
     }
-        
+    
+    public int getSize(){
+            if(this.head==null)
+                return 0;
+            int cont =0;
+            while(this.head!= null){
+                cont++;
+                this.head = head.getNext();
+            }
+            
+            return cont;
+        }
+    
     
     
     public class Node<E>{
@@ -123,6 +139,9 @@ public class LinkedList<E> {
         public void setNext(Node<E> next) {
             this.next = next;
         }
+        
+        
+        
     
         
     

@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
+import java.util.Date;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -92,7 +93,7 @@ public class VtSubirFotosController {
 
     }
     
-    void subirfoto(String ruta)throws IOException {
+   void subirfoto(String ruta)throws IOException {
          FileChooser fc = new FileChooser();
         fc.getExtensionFilters().addAll(
         new FileChooser.ExtensionFilter("Imagenes","*.jpg","*.jpeg","*.png"));
@@ -118,13 +119,13 @@ public class VtSubirFotosController {
         ArrayList<String> atrib = Foto.atributos();
             for(String cad:atrib)
                 añadirCaja(cad+":");
-        añadirCaja("Aparecen personas en la foto?");
-        ArrayList<String> listaOp= new ArrayList<>();
-        listaOp.add("Si");listaOp.add("No");
+        //añadirCaja("Aparecen personas en la foto?");
+       // ArrayList<String> listaOp= new ArrayList<>();
+       // listaOp.add("Si");listaOp.add("No");
         //addCombo(cbOp, listaOp);
         //panel.getChildren().add(cbOp);
         //
-        String nombreDir=alname.getText();
+       /* String nombreDir=alname.getText();
         String ruta=path+nombreDir;
         File D = new File(ruta);
         boolean D1 = D.mkdirs();
@@ -144,6 +145,7 @@ public class VtSubirFotosController {
         
          subirfoto(ruta+"\\");
          rutas.addLast(ruta+"\\");
+*/
     }
     public void addCombo(ComboBox cb, ArrayList<String> li){        
         cb.setItems(FXCollections.observableArrayList(li));
@@ -168,6 +170,27 @@ public class VtSubirFotosController {
         return info;
       
        }
+       
+       public Foto crearFoto(){
+        ArrayList<String> info = informacion();
+        LinkedList<String> nombres = new LinkedList<String>();
+        String personas = info.get(3);
+        String [] lista= personas.split(",");
+        for(int i=0; i<lista.length;i++){
+            nombres.addFirst(lista[i]);
+        }
+       
+        return new Foto(info.get(0),info.get(1),info.get(2),nombres);
+        
+    }
+       public void GuardarFoto() {
+        LinkedList<Foto> fot = Foto.leer("fotos");
+        Foto f1 = crearFoto();
+        f1.setRutaFoto(txtimg.getText());
+        fot.addLast(f1);
+        Foto.serializar(fot, "fotos");
+    }
+       
        
        
        
