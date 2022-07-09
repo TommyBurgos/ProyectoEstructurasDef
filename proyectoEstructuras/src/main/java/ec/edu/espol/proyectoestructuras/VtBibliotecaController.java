@@ -67,12 +67,12 @@ public class VtBibliotecaController implements Initializable {
     private void buscarFotos(MouseEvent event) {
         fotos.getChildren().clear();
         
-       /*LinkedList<Foto> albumes = Foto.leer("Fotos");
+       LinkedList<Foto> albumes = Foto.leer("Fotos");
         for(int i = 0; i < albumes.getSize(); i++){
             HBox datosFoto = new HBox();
-            Text t = new Text(a.toString());
+            Text t = new Text(albumes.get(i).toString());
             datosFoto.setSpacing(10);
-            Image img = new Image("img/"+a.getLink());
+            Image img = new Image("img/"+albumes.get(i).getRutaFoto());
             ImageView imgview = new ImageView(img);
             imgview.setFitWidth(150);
             imgview.setFitHeight(150);
@@ -81,7 +81,7 @@ public class VtBibliotecaController implements Initializable {
             fotos.getChildren().add(datosFoto);
             
     
-    }*/
+    }
     
 }
 }

@@ -88,6 +88,22 @@ public class LinkedList<E> {
         
         return tmp;
     }
+    public E get(int index) {
+        if (index < 0)
+			return null;
+		Node n = null;
+		if (head != null) {
+			n = head.getNext();
+			for (int i = 0; i < index; i++) {
+				if (n.getNext() == null)
+					return null;
+ 
+				n = n.getNext();
+			}
+			return (E) n.getDato();
+		}
+		return (E) n.getDato();
+    }
     public boolean search(E dato){
         Node tmp=head;
         while(tmp!=null && tmp.dato!=dato){
