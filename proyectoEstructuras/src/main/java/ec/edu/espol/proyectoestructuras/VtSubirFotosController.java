@@ -90,8 +90,16 @@ public class VtSubirFotosController {
             String placeToSaveFile = path+selectedFile.getName();
             Files.copy(selectedFile.toPath(),new File(placeToSaveFile).toPath(),StandardCopyOption.REPLACE_EXISTING);
             txtimg.setText(selectedFile.getName());
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Albun creado exitosamente");
+            alert.setTitle("success");
+            alert.setHeaderText(null);
+            alert.showAndWait();
         } else {
             txtimg.setText("");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("No se pudo cargar la imagen");
+            alert.showAndWait();
         }           
 
     }

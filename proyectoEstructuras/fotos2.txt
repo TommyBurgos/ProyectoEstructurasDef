@@ -1,3 +1,5 @@
 ESTO,ES,UNA,PRUEBITA,img\DATAWEB.jpg
 arenita,Fondo de Bikini,10 de Julio,arenita,img\arenitaa.jpg
 Planton,Fondo de Bikini,10 de Julio,Plancton,img\estampado2.png
+Naruto,Konoha,13 de julio,NarutoUsumaki,img\naruto.jpg
+Naruto,Konoha,13 de julio,NarutoUsumaki,img\naruto.jpg
