@@ -4,11 +4,14 @@
  */
 package Estructuras;
 
+import java.io.Serializable;
+
 /**
  *
  * @author tommy_Burgos
  */
-public class CircleList<E> {
+public class CircleList<E> implements Serializable {
+    static final long serialVersionUID = 1L;
     Node<E> tail;
 
     public CircleList() {

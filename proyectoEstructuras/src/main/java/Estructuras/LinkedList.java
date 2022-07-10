@@ -4,11 +4,14 @@
  */
 package Estructuras;
 
+import java.io.Serializable;
+
 /**
  *
  * @author tommy_Burgos
  */
-public class LinkedList<E> {
+public class LinkedList<E> implements Serializable {
+    static final long serialVersionUID = 1L;
     Node<E> head;
     Node<E> tail;
     
@@ -126,7 +129,8 @@ public class LinkedList<E> {
     
     
     
-    public class Node<E>{
+    public class Node<E> implements Serializable{
+        static final long serialVersionUID = 1L;
         private E dato;
         private Node<E> next;
 

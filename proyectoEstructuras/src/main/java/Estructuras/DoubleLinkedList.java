@@ -4,11 +4,14 @@
  */
 package Estructuras;
 
+import java.io.Serializable;
+
 /**
  *
  * @author tommy_Burgos
  */
-public class DoubleLinkedList<E> {
+public class DoubleLinkedList<E> implements Serializable{
+    static final long serialVersionUID = 1L;
     private Node<E> head;
     private Node<E> tail;
 

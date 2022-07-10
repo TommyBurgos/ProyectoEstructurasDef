@@ -31,11 +31,18 @@ import javafx.stage.FileChooser;
 
   
 public class VtSubirFotosController {
-    private LinkedList<String> rutas;
+    private LinkedList<Foto> foto= new LinkedList<>();
     private ComboBox carpetas;
     private ComboBox cbOp;
     private ComboBox cbCantPersonas;
-    private String path ="src\\main\\resources\\img\\";   
+    private String path ="src\\main\\resources\\img\\";
+    private VBox vb;
+    private Text txt;
+    private TextField tf;
+
+    public TextField getTf() {
+        return tf;
+    }
     
     
     @FXML
@@ -58,17 +65,18 @@ public class VtSubirFotosController {
 
     @FXML
     private Button volver;
+    
 
 
     @FXML
     void ConfirmarYRegresar(MouseEvent event) {
-
+           GuardarFoto();
     }
     
    // public void initialize(URL url, ResourceBundle rb) {
-     //   ArrayList<String> albumes = new ArrayList(Arrays.asList("Album Playa","Album Colegio","Album Universidad"));
+    //   ArrayList<String> albumes = new ArrayList(Arrays.asList("Album Playa","Album Colegio","Album Universidad"));
     //    comboBox.setItems(FXCollections.observableList(albumes));
-     //   panel.setHgap(10);
+    //   panel.setHgap(10);
        
   //  }    
 
@@ -79,7 +87,7 @@ public class VtSubirFotosController {
 
     @FXML
     void subirfoto(MouseEvent event)throws IOException {
-         FileChooser fc = new FileChooser();
+        FileChooser fc = new FileChooser();
         fc.getExtensionFilters().addAll(
         new FileChooser.ExtensionFilter("Imagenes","*.jpg","*.jpeg","*.png"));
         File selectedFile = fc.showOpenDialog(null);
@@ -94,7 +102,7 @@ public class VtSubirFotosController {
     }
     
    void subirfoto(String ruta)throws IOException {
-         FileChooser fc = new FileChooser();
+        FileChooser fc = new FileChooser();
         fc.getExtensionFilters().addAll(
         new FileChooser.ExtensionFilter("Imagenes","*.jpg","*.jpeg","*.png"));
         File selectedFile = fc.showOpenDialog(null);
@@ -151,10 +159,10 @@ public class VtSubirFotosController {
         cb.setItems(FXCollections.observableArrayList(li));
     }
       public void añadirCaja(String cad){
-        VBox vb = new VBox();
-        Text txt = new Text(cad);
+        vb = new VBox();
+        txt = new Text(cad);
         vb.setSpacing(20);
-        TextField tf = new TextField();
+        tf = new TextField();
         vb.getChildren().add(txt);
         vb.getChildren().add(tf);
         panel.getChildren().add(vb);
@@ -168,7 +176,6 @@ public class VtSubirFotosController {
             info.add(tf.getText());
         }
         return info;
-      
        }
        
        public Foto crearFoto(){
@@ -184,13 +191,17 @@ public class VtSubirFotosController {
         
     }
        public void GuardarFoto() {
-        LinkedList<Foto> fot = Foto.leer("fotos");
+        LinkedList<Foto> fot = Foto.leer("fotos.txt");
         Foto f1 = crearFoto();
         f1.setRutaFoto(txtimg.getText());
         fot.addLast(f1);
-        Foto.serializar(fot, "fotos");
+        Foto.serializar(fot,"fotos.txt");
     }
-       
+    public static void main(String[] args) {
+        VtSubirFotosController c = new VtSubirFotosController();
+        c.getTf().getText();
+        
+    } 
        
        
        

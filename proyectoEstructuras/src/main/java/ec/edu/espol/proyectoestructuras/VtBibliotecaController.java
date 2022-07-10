@@ -8,8 +8,10 @@ import Estructuras.LinkedList;
 import ec.edu.espol.model.Foto;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
@@ -29,15 +31,14 @@ import javafx.scene.text.Text;
  */
 public class VtBibliotecaController implements Initializable {
     
-
     /**
      * Initializes the controller class.
      */
       @FXML
-    private ComboBox<?> cbx1;
+    private ComboBox cbx1;
 
     @FXML
-    private ComboBox<?> cbx2;
+    private ComboBox cbx2;
 
     @FXML
     private VBox fotos;
@@ -58,7 +59,15 @@ public class VtBibliotecaController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        cbx1.getItems().add("Descripción");
+        cbx1.getItems().add("Lugar");
+        cbx1.getItems().add("Fecha");
+        cbx1.getItems().add("Personas");
+        
+        cbx2.getItems().add("Descripción");
+        cbx2.getItems().add("Lugar");
+        cbx2.getItems().add("Fecha");
+        cbx2.getItems().add("Personas");
     }  
     
     // Se necesita crear una lista de Fotos en donde se guarden las fotos subidas, despues el código debería mostrar todas las fotos al dar clik en
@@ -78,8 +87,7 @@ public class VtBibliotecaController implements Initializable {
             imgview.setFitHeight(150);
             datosFoto.getChildren().add(t);
             datosFoto.getChildren().add(imgview);
-            fotos.getChildren().add(datosFoto);
-            
+            fotos.getChildren().add(datosFoto);           
     
     }
     
