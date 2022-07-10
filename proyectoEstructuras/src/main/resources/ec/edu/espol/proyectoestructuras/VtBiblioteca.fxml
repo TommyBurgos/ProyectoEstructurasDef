@@ -3,6 +3,8 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -10,8 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="ec.edu.espol.proyectoestructuras.VtBibliotecaController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.proyectoestructuras.VtBibliotecaController">
    <children>
       <ImageView fitHeight="44.0" fitWidth="66.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -28,12 +29,18 @@
             <Image url="@volver.png" />
          </image>
       </ImageView>
-      <VBox fx:id="fotos" alignment="TOP_CENTER" layoutX="206.0" layoutY="72.0" prefHeight="292.0" prefWidth="373.0" />
       <Button layoutX="51.0" layoutY="312.0" mnemonicParsing="false" onMouseClicked="#buscarFotos" prefHeight="26.0" prefWidth="122.0" text="Buscar" />
-      <Text layoutX="60.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Búsqueda por lugar" />
-      <Text layoutX="59.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Búsqueda por personas" />
-      <Text layoutX="58.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingrese la búsqueda" />
+      <Text layoutX="60.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="de búsqueda:" />
+      <Text layoutX="33.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Búsqueda por personas" />
+      <Text layoutX="58.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingrese el parámetro" />
       <ComboBox fx:id="cbx1" layoutX="54.0" layoutY="126.0" prefHeight="26.0" prefWidth="107.0" />
-      <ComboBox fx:id="cbx2" layoutX="54.0" layoutY="245.0" prefHeight="26.0" prefWidth="107.0" />
+      <ScrollPane fx:id="fotos1" layoutX="204.0" layoutY="50.0" prefHeight="351.0" prefWidth="382.0">
+         <content>
+            <VBox fx:id="fotos" alignment="TOP_CENTER" prefHeight="292.0" prefWidth="373.0" />
+         </content>
+      </ScrollPane>
+      <Text layoutX="33.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Búsqueda por lugar" />
+      <TextField fx:id="personas" layoutX="33.0" layoutY="188.0" promptText="Persona1,Persona2" />
+      <TextField fx:id="lugar" layoutX="33.0" layoutY="256.0" promptText="Guayaquil" />
    </children>
 </AnchorPane>
