@@ -16,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -34,14 +35,14 @@ public class VtBibliotecaController implements Initializable {
     /**
      * Initializes the controller class.
      */
-      @FXML
-    private ComboBox cbx1;
+    @FXML
+    private ComboBox<?> cbx1;
 
     @FXML
-    private ComboBox cbx2;
+    private ComboBox<?> cbx2;
 
     @FXML
-    private VBox fotos;
+    private VBox fotos= new VBox();
 
     @FXML
     private ImageView volver;
@@ -56,40 +57,45 @@ public class VtBibliotecaController implements Initializable {
         App.setRoot("vtSegunda");
     }
 
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        cbx1.getItems().add("Descripción");
-        cbx1.getItems().add("Lugar");
-        cbx1.getItems().add("Fecha");
-        cbx1.getItems().add("Personas");
-        
-        cbx2.getItems().add("Descripción");
-        cbx2.getItems().add("Lugar");
-        cbx2.getItems().add("Fecha");
-        cbx2.getItems().add("Personas");
-    }  
-    
+        buscarFotos();
+    }
+
     // Se necesita crear una lista de Fotos en donde se guarden las fotos subidas, despues el código debería mostrar todas las fotos al dar clik en
     //el Vbox, tambien se puede crear una lista de albumes y realizar lo mismo.
-     @FXML
-    private void buscarFotos(MouseEvent event) {
+    @FXML
+    private void buscarFotos() {
         fotos.getChildren().clear();
+
+        LinkedList<Foto> albumes = Foto.leer("fotos2.txt");
+        System.out.println(albumes.getSize());
+        System.out.println("holaMundo");
         
-       LinkedList<Foto> albumes = Foto.leer("Fotos");
-        for(int i = 0; i < albumes.getSize(); i++){
+        System.out.println(albumes.getHead());
+        System.out.println(albumes.getSize());
+        ScrollPane sp= new ScrollPane();
+        for (int i = 0; i < albumes.getSize()-1; i++) {
             HBox datosFoto = new HBox();
-            Text t = new Text(albumes.get(i).toString());
+            System.out.println(albumes.get(i).getRutaFoto());
+            Text t = new Text(albumes.get(i).getDescripcion());
             datosFoto.setSpacing(10);
-            Image img = new Image("img/"+albumes.get(i).getRutaFoto());
+            Image img = new Image(albumes.get(i).getRutaFoto());
             ImageView imgview = new ImageView(img);
             imgview.setFitWidth(150);
             imgview.setFitHeight(150);
             datosFoto.getChildren().add(t);
             datosFoto.getChildren().add(imgview);
-            fotos.getChildren().add(datosFoto);           
-    
+            sp.setContent(datosFoto);
+            //fotos.getChildren().add(sp);
+            fotos.getChildren().add(datosFoto);
+
+        }
+
     }
     
-}
+    /*public static void main(String[] args) {
+        VtBibliotecaController v = new VtBibliotecaController();
+        v.buscarFotos();
+    }*/
 }

@@ -11,7 +11,6 @@ import java.io.Serializable;
  * @author tommy_Burgos
  */
 public class LinkedList<E> implements Serializable {
-    static final long serialVersionUID = 1L;
     Node<E> head;
     Node<E> tail;
     
@@ -28,7 +27,7 @@ public class LinkedList<E> implements Serializable {
     }
     public void addFirst(E e){
         if(isEmpty()){
-            head=tail=new Node<E>(e);
+            this.head=this.tail=new Node<E>(e);
         }else{
             head= new Node<E>(e,head);
         }
@@ -43,6 +42,7 @@ public class LinkedList<E> implements Serializable {
             tail=nuevo;
         }
     }
+
     public Node<E> removeFirst(){
         Node<E> nuevo = head;
         if(head==null) return null;
@@ -60,7 +60,7 @@ public class LinkedList<E> implements Serializable {
             Node<E> tmp = head;
             while(tmp.next!=tail){
                 tmp=tmp.next;
-            }
+        }
         tail=tmp;
         }tail.next=null;
         return nuevo;
@@ -119,18 +119,26 @@ public class LinkedList<E> implements Serializable {
             if(this.head==null)
                 return 0;
             int cont =0;
-            while(this.head!= null){
+            Node<E> e = this.head;
+            while(e!= null){
                 cont++;
-                this.head = head.getNext();
+                e = e.getNext();
             }
             
             return cont;
         }
+
+    public Node<E> getHead() {
+        return head;
+    }
+
+    public Node<E> getTail() {
+        return tail;
+    }
     
     
     
-    public class Node<E> implements Serializable{
-        static final long serialVersionUID = 1L;
+    public class Node<E>{
         private E dato;
         private Node<E> next;
 
@@ -169,13 +177,14 @@ public class LinkedList<E> implements Serializable {
 
     @Override
     public String toString() {
+        String contenido= "";
         Node<E> n= head;
         while(n!=null){
-            System.out.print(n.dato+", ");
+            contenido+=n.getDato()+",";
             n=n.next;
         }
-        
-        return "LinkedList{" + "head=" + head.dato + ", tail=" + tail.dato + '}';
+        return contenido.substring(0, contenido.length() - 1);
+       // return "LinkedList{" + "head=" + head.dato + ", tail=" + tail.dato + '}';
     }
     
 }
