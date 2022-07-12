@@ -186,5 +186,15 @@ public class LinkedList<E> implements Serializable {
         return contenido.substring(0, contenido.length() - 1);
        // return "LinkedList{" + "head=" + head.dato + ", tail=" + tail.dato + '}';
     }
+    public String toString2() {
+        String contenido= "";
+        Node<E> n= head;
+        while(n!=null){
+            contenido+=n.getDato()+"$";
+            n=n.next;
+        }
+        return contenido.substring(0, contenido.length() - 1);
+       // return "LinkedList{" + "head=" + head.dato + ", tail=" + tail.dato + '}';
+    }
     
 }

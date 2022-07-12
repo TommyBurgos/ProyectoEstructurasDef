@@ -29,17 +29,17 @@ public class Foto implements Serializable{
     private String descripcion;
     private String lugar;
     private String fecha;
-    private LinkedList<String> personas;
+    private LinkedList<Persona> personas;
     private String rutaFoto;
 
-    public Foto(String descripcion, String lugar, String fecha, LinkedList<String> personas, String rutaFoto) {
+    public Foto(String descripcion, String lugar, String fecha, LinkedList<Persona> personas, String rutaFoto) {
         this.descripcion = descripcion;
         this.lugar = lugar;
         this.fecha = fecha;
         this.personas = personas;
         this.rutaFoto=rutaFoto;
     }
-    public Foto(String descripcion, String lugar, String fecha, LinkedList<String> personas) {
+    public Foto(String descripcion, String lugar, String fecha, LinkedList<Persona> personas) {
         this.descripcion = descripcion;
         this.lugar = lugar;
         this.fecha = fecha;
@@ -89,11 +89,11 @@ public class Foto implements Serializable{
         this.fecha = fecha;
     }
 
-    public LinkedList<String> getPersonas() {
+    public LinkedList<Persona> getPersonas() {
         return personas;
     }
 
-    public void setPersonas(LinkedList<String> personas) {
+    public void setPersonas(LinkedList<Persona> personas) {
         this.personas = personas;
     }
  
@@ -104,11 +104,12 @@ public class Foto implements Serializable{
     
     public static ArrayList<String> atributos(){
         ArrayList<String> lista = new ArrayList(Arrays.asList("Descripción","Lugar","Fecha","Personas"));
-        return lista;}
+        return lista;
+    }
     
     public static void crearArchivoFoto(){
         try{
-            File file = new File("fotos2.txt");
+            File file = new File("fotos3.txt");
             file.createNewFile();
         }catch(Exception e){
             e.getMessage();
@@ -117,11 +118,11 @@ public class Foto implements Serializable{
 
   
     
-    public static void registrarFoto(String archivo,String descripcion, String lugar, String fecha,LinkedList<String> personas, String ruta){
+    public static void registrarFoto(String archivo,String descripcion, String lugar, String fecha,LinkedList<Persona> personas, String ruta){
         try(FileWriter fw = new FileWriter(archivo,true);
         BufferedWriter bw = new BufferedWriter(fw);
         PrintWriter out = new PrintWriter(bw)){
-            out.println(descripcion+","+lugar+","+fecha+","+personas+","+ruta);
+            out.println(descripcion+","+lugar+","+fecha+","+personas.toString2().toString()+","+ruta);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }}
@@ -164,21 +165,24 @@ public class Foto implements Serializable{
                 String linea = sc.nextLine();               
                 String[] tokens = linea.split(",");
                 
-                if (tokens.length==5){
+                
                     String personas = tokens[3];
-                    String [] lista= personas.split(",");
-                    LinkedList<String> nombres = new LinkedList<>();
-                    for(int i=0; i<lista.length;i++)
-                        nombres.addLast(lista[i]);
+                    String [] lista= personas.split("$");
+                    LinkedList<Persona> nombres = new LinkedList<>();
+                    for(int i=0; i<lista.length;i++){
+                        
+                        Persona pn = new Persona(lista[i]);
+                        nombres.addLast(pn);
+                    }
         
                     Foto a = new Foto(tokens[0],tokens[1],
                     tokens[2],nombres,tokens[4]);
                     
                     fotos.addLast(a);
-                }
-                Foto a = new Foto(tokens[0],tokens[1],tokens[2],tokens[4]);
-                System.out.println(a.getRutaFoto());
-                fotos.addFirst(a);
+                
+                Foto b = new Foto(tokens[0],tokens[1],tokens[2],tokens[4]);
+                System.out.println(b.getRutaFoto());
+                fotos.addFirst(b);
                 
             }
         }

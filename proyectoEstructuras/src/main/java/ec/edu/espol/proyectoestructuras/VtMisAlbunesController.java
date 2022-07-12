@@ -4,6 +4,8 @@
  */
 package ec.edu.espol.proyectoestructuras;
 
+import ec.edu.espol.model.listaAlbumes;
+import ec.edu.espol.model.paraSerializar;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -23,7 +25,7 @@ import javafx.scene.paint.Color;
  * @author tommy_Burgos
  */
 public class VtMisAlbunesController implements Initializable {
-
+private listaAlbumes ltAlb= new listaAlbumes();
     @FXML
     private HBox barraName;
     @FXML
@@ -38,6 +40,14 @@ public class VtMisAlbunesController implements Initializable {
         
         barraSuperior.setBackground(new Background(new BackgroundFill(Color.web("#C2DBFC"),CornerRadii.EMPTY,Insets.EMPTY)));
         barraName.setBackground(new Background(new BackgroundFill(Color.web("#C2DBFC"),CornerRadii.EMPTY,Insets.EMPTY)));
+        paraSerializar o = new paraSerializar();
+        o.readContains();
+       o.cargarAlbumesData(ltAlb);
+        for (int i = 0; i < ltAlb.size(); i++) {
+            System.out.println("hola");
+        }
+        //System.out.println(o.getAlbum().getNombre());
+        //System.out.println(ltAlb.getMisAlbumes().getHead().getDato().getNombre());
     }    
     
 }

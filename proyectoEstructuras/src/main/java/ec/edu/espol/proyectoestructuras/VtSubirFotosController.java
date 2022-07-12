@@ -5,7 +5,11 @@
  */
 package ec.edu.espol.proyectoestructuras;
 import Estructuras.LinkedList;
+import ec.edu.espol.model.Album;
 import ec.edu.espol.model.Foto;
+import ec.edu.espol.model.Persona;
+import ec.edu.espol.model.listaAlbumes;
+import ec.edu.espol.model.paraSerializar;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -31,7 +35,7 @@ import javafx.stage.FileChooser;
 
   
 public class VtSubirFotosController {
-    private LinkedList<String> rutas;
+    private listaAlbumes albumes=new listaAlbumes();
     private ComboBox carpetas;
     private ComboBox cbOp;
     private ComboBox cbCantPersonas;
@@ -58,13 +62,35 @@ public class VtSubirFotosController {
 
     @FXML
     private Button volver;
-
-
-   
     
     @FXML
-    void ConfirmarYRegresar(MouseEvent event) {
+    void ConfirmarYRegresar(MouseEvent event) throws IOException {
         crearFoto();
+        guardarAlbum();
+        App.setRoot("vtSegunda");
+        System.out.println("Logrado");
+        System.out.println(albumes.getMisAlbumes().getHead().getDato().getNombre());
+        String nombreDir=alname.getText();
+        String ruta=path+nombreDir;
+        File D = new File(ruta);
+        boolean D1 = D.mkdirs();
+        if(D1){ 
+         Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("success");
+        alert.setHeaderText(null);
+        alert.setContentText("Albun creado exitosamente");
+        alert.showAndWait();
+      }else{  
+         Alert alert = new Alert(Alert.AlertType.ERROR);
+         alert.setTitle("Error Message");
+        alert.setHeaderText(null);
+        alert.setContentText("Error Message");
+        alert.showAndWait();
+      }
+        
+         subirfoto(ruta+"\\");
+         //rutas.addLast(ruta+"\\");
+
 
     }
     
@@ -91,7 +117,7 @@ public class VtSubirFotosController {
             Files.copy(selectedFile.toPath(),new File(placeToSaveFile).toPath(),StandardCopyOption.REPLACE_EXISTING);
             txtimg.setText(selectedFile.getName());
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Albun creado exitosamente");
+            alert.setContentText("Imagen cargada exitosamente");
             alert.setTitle("success");
             alert.setHeaderText(null);
             alert.showAndWait();
@@ -185,17 +211,25 @@ public class VtSubirFotosController {
        public void  crearFoto(){
         
         ArrayList<String> info = informacion();
-        LinkedList<String> nombres = new LinkedList<String>();
+        LinkedList<Persona> nombres = new LinkedList<>();
         String personas = info.get(3);
-        String [] lista= personas.split(",");
+        String [] lista= personas.split("$");
         for(int i=0; i<lista.length;i++){
-            nombres.addLast(lista[i]);
+            Persona pn=new Persona(lista[i]);
+            nombres.addLast(pn);
         }
-        Foto.registrarFoto("fotos2.txt",info.get(0),info.get(1),info.get(2),nombres,"img\\"+txtimg.getText());
-       
-        
+        Foto.registrarFoto("fotos3.txt",info.get(0),info.get(1),info.get(2),nombres,"img\\"+txtimg.getText()); 
         
     }
+       public void guardarAlbum() throws IOException{
+           Album alb=new Album(alname.getText());
+           albumes.addAlbum(alb);
+           paraSerializar o = new paraSerializar();
+           o.createFile();
+           o.cargarAlbumesData(albumes);
+           System.out.println(albumes.getMisAlbumes().getSize());
+           
+       }
       // public void GuardarFoto() {
         
       //  LinkedList<Foto> fot = Foto.leer("fotos.txt");

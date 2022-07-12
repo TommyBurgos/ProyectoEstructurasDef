@@ -6,6 +6,8 @@ package ec.edu.espol.proyectoestructuras;
 
 import Estructuras.LinkedList;
 import ec.edu.espol.model.Foto;
+import ec.edu.espol.model.listaAlbumes;
+import ec.edu.espol.model.paraSerializar;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -58,6 +60,7 @@ public class VtBibliotecaController implements Initializable {
     @FXML
     void regresar(MouseEvent event) throws IOException {
         App.setRoot("vtSegunda");
+        
     }
 
     @Override
@@ -65,6 +68,7 @@ public class VtBibliotecaController implements Initializable {
         ObservableList<String> tipos = FXCollections.observableArrayList("Lugar","Personas","Personas y Lugar");
    
         cbx1.setItems(tipos);
+        
     }
 
     // Se necesita crear una lista de Fotos en donde se guarden las fotos subidas, despues el código debería mostrar todas las fotos al dar clik en
@@ -76,7 +80,6 @@ public class VtBibliotecaController implements Initializable {
         LinkedList<Foto> filtrada2 = new LinkedList<>();
         LinkedList<Foto> filtrada3 = new LinkedList<>();
 
-
         LinkedList<Foto> albumes = Foto.leer("fotos2.txt");
         
         System.out.println(albumes.getSize());
@@ -87,10 +90,8 @@ public class VtBibliotecaController implements Initializable {
         ScrollPane sp= new ScrollPane();
         if((String)cbx1.getValue() == null){
              for (int i = 0; i < albumes.getSize()-1; i++) {
-                 filtrada.addLast(albumes.get(i));
-            
-        }
-                
+                 filtrada.addLast(albumes.get(i));           
+        }                
                 }else if("Lugar".equals((String)cbx1.getValue())){
                     for (int i = 0; i < albumes.getSize()-1; i++){
                         if(albumes.get(i).getLugar().equals(lugar.getText())){
@@ -108,8 +109,7 @@ public class VtBibliotecaController implements Initializable {
                         if(albumes.get(i).getPersonas().equals(personas) && albumes.get(i).getLugar().equals(lugar.getText()) ){
                             filtrada.addLast(albumes.get(i));
                 }
-                }
-                    
+                }                  
                     
                 }
         for (int i = 0; i < filtrada.getSize()-1; i++) {
